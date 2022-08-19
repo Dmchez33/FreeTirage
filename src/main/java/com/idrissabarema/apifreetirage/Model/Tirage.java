@@ -1,9 +1,6 @@
 package com.idrissabarema.apifreetirage.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 public class Tirage {
@@ -14,4 +11,9 @@ public class Tirage {
     private Date date_t;
     private String libelle_l;
     private int nbre_demande;
+
+    //tirage entre tirage et la liste
+    @ManyToOne
+    @JoinColumn(name = "idliste")
+    private Liste idliste;
 }

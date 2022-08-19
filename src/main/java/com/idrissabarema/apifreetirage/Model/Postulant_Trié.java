@@ -2,10 +2,8 @@ package com.idrissabarema.apifreetirage.Model;
 
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -19,4 +17,8 @@ public class Postulant_Trié {
     private String prenom_pt;
     private String numero_pt;
     private String email_pt;
+    // Jointure entre la table postulant_trie et Tirage
+    @ManyToOne
+    @JoinColumn(name = "idtirage")
+    private Tirage idtirage;
 }

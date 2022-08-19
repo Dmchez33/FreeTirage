@@ -7,6 +7,6 @@ import java.util.List;
 public interface ListeService {
 
     //Declaration des methode du Service Liste
-    Liste CreerListe();
+    Liste CreerListe(Liste liste);
     List<Liste> AfficherListe();
 }

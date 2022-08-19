@@ -1,9 +1,7 @@
 package com.idrissabarema.apifreetirage.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 public class Postulant {
     @Id
@@ -14,5 +12,10 @@ public class Postulant {
     private String prenom_p;
     private String numero_p;
     private String email_p;
+
+    //Jointure entre la table postulant et la table liste
+    @ManyToOne
+    @JoinColumn(name = "idlist")
+    private Liste idliste;
 
 }

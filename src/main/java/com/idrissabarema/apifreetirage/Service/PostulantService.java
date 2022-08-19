@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PostulantService {
     //Declaration des methode du Service Postulant
-    Postulant CreerPostulant();
+    String INSERPostulant();
+
     List<Postulant> AfficherPostulant();
 }
