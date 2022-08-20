@@ -1,6 +1,7 @@
 package com.idrissabarema.apifreetirage.Service;
 
 import com.idrissabarema.apifreetirage.Model.Liste;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -8,5 +9,5 @@ public interface ListeService {
 
     //Declaration des methode du Service Liste
     Liste CreerListe(Liste liste);
-    List<Liste> AfficherListe();
+    Iterable<Object[]>  AfficherListe();
 }

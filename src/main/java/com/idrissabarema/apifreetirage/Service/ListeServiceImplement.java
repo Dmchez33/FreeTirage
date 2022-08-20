@@ -16,11 +16,12 @@ public class ListeServiceImplement implements ListeService {
     public Liste CreerListe(Liste liste) {
 
         // Enregistrement des donnees dans la table liste
+
         return listeRepository.save(liste);
     }
 
     @Override
-    public List<Liste> AfficherListe() {
-        return null;
+    public Iterable<Object[]>  AfficherListe() {
+        return listeRepository.AfficherListe();
     }
 }
