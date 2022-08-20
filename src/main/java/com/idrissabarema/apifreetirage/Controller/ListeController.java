@@ -1,32 +1,26 @@
 package com.idrissabarema.apifreetirage.Controller;
 
+
 import com.idrissabarema.apifreetirage.Model.Liste;
 import com.idrissabarema.apifreetirage.Service.ListeService;
+import com.idrissabarema.apifreetirage.Service.PostulantService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/liste")
 @AllArgsConstructor
+@RequestMapping("/liste")
 public class ListeController {
-    //DECLARATION D'UN SERVICE
-    /*@Autowired
+    @Autowired
     final private ListeService listeService;
 
-    // Methode permettant de sauvegarder les donnees
-    @PostMapping("ajouter_liste")
-    Liste CreerListe(Liste liste){
+    @PostMapping("/creer")
+    public Liste CreerListe(@RequestBody Liste liste){
         return listeService.CreerListe(liste);
     }
-
-    @GetMapping("afficher_liste")
-    List<Liste> AfficherListe(){
+    @GetMapping("/afficher")
+    public Iterable<Object[]>  AfficherListe(){
         return listeService.AfficherListe();
-    }*/
+    }
 }
