@@ -1,6 +1,9 @@
 package com.idrissabarema.apifreetirage.Controller;
 
 
+import com.idrissabarema.apifreetirage.Model.Liste;
+import com.idrissabarema.apifreetirage.Repository.ListeRepository;
+import com.idrissabarema.apifreetirage.Service.ListeService;
 import com.idrissabarema.apifreetirage.Service.PostulantService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

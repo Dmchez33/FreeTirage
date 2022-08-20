@@ -9,4 +9,7 @@ public interface ListeService {
     //Declaration des methode du Service Liste
     Liste CreerListe(Liste liste);
     List<Liste> AfficherListe();
+
+    // Declaration de la methode qui retourne liste en fonction d'un id
+    Liste FindIdliste(int idliste);
 }
