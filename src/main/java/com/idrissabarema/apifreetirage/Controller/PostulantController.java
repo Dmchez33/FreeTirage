@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/postulant")
@@ -23,17 +24,24 @@ public class PostulantController {
 
     @Autowired
     final private PostulantService postulantService;
+
     private  final ListeService listeService;
 
-    @PostMapping("/ajoute_postulant/{libelle_l}")
-    String AjouterPostulant(@Param("file")MultipartFile file, Liste liste, String libelle_l){
+    // METHODE PERMETTANT DE CREER UN POSTULANT DANS LE CONTROLLER
+    @PostMapping("/ajoute_postulant/{libellel}")
+    String AjouterPostulant(@Param("file") MultipartFile file, Liste liste, String libellel){
 
-       //PostulantServiceImplement importer= new PostulantServiceImplement();
+
         //IMPLEMENTATION DE LA METHODE DANS LE CONTROLLER
-       ArrayList<Postulant> importer= postulantService.INSERPostulant(file);
-       liste.setDate_l(new Date());
+       ArrayList<Postulant> importer = postulantService.INSERPostulant(file);
+
+       // AFFECTATION DE LA DATE A LA LISTE
+       liste.setDatel(new Date());
+
+       // CREATION D'UNE LISTE
        Liste l = listeService.CreerListe(liste);
 
+       //BOUCLE PERMETTANT DE PARCOURUT LES POSTULANT DANS LE FICHIER ET AFFECTER L'ID DE LA LISTE
        for (Postulant p: importer)
        {
          p.setIdliste(l);
@@ -42,9 +50,13 @@ public class PostulantController {
 
        return "import avec succes";
     }
+
+    // METHODE PERMETTANT D AFFICHER LES POSTULANT DANS LE
     @GetMapping("/afficher-postulant")
-    public Iterable<Object[]> Afficher_Postulant(){
+    public List<Postulant> Afficher_Postulant(){
+
         return postulantService.Afficher_Postulant();
+
     }
 
 }

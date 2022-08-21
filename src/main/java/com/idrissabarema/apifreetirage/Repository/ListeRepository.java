@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ListeRepository extends JpaRepository<Liste, Integer> {
-    @Query(value = "SELECT liste.date_l,liste.libelle_l FROM liste;", nativeQuery = true)
+    @Query(value = "SELECT liste.datel,liste.libellel FROM liste;", nativeQuery = true)
     public Iterable<Object[]>  AfficherListe();
 }

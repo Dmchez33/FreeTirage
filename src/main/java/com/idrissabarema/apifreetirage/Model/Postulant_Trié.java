@@ -12,11 +12,11 @@ public class Postulant_Trié {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Creation des attributs dans l'entite Postulant
-    private int id_pt;
-    private String nom_pt;
-    private String prenom_pt;
-    private String numero_pt;
-    private String email_pt;
+    private long idpt;
+    private String nompt;
+    private String prenompt;
+    private String numeropt;
+    private String emailpt;
     // Jointure entre la table postulant_trie et Tirage
     @ManyToOne
     @JoinColumn(name = "idtirage")

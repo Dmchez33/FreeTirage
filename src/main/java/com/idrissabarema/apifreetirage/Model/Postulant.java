@@ -16,11 +16,11 @@ public class Postulant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Creation des attributs dans l'entite Postulant
-    private int id_p;
-    private String nom_p;
-    private String prenom_p;
-    private String numero_p;
-    private String email_p;
+    private long idp;
+    private String nomp;
+    private String prenomp;
+    private String numerop;
+    private String emailp;
 
     //Jointure entre la table postulant et la table liste
     @ManyToOne

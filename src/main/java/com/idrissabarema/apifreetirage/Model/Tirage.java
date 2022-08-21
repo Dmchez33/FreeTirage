@@ -1,16 +1,21 @@
 package com.idrissabarema.apifreetirage.Model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 @Entity
+@Getter
+@Setter
 public class Tirage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Creation des attributs dans l'entite Tirage
-    private int id_t;
-    private Date date_t;
-    private String libelle_l;
-    private int nbre_demande;
+    private long idt;
+    private Date datet;
+    private String libellel;
+    private int nbredemande;
 
     //tirage entre tirage et la liste
     @ManyToOne
