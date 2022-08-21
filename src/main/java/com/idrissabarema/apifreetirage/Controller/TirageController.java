@@ -41,12 +41,13 @@ public class TirageController {
         // CREATION D'UN D'UN OBJET RANDOM POUR POUVOIR SELECTIONNER LES ELEMENT DE FACON ALEATOIR
         Random rand = new Random();
 
+        long nbr = 0;
         for (int i=0; i<tirage.getNbredemande(); i++){
             // LA METHODE NEXTLONG RETOURNE DES VALEUR ALEATOIRE A CHAQUE ITERATION DE LA BOUCLE FOR
             long nbrAleatoire = rand.nextLong(postulantService.NombrePostulant());
 
-            //BOUCLE PERMETTANT DE VERIFIER SI LE NOMBRE ALEATOIR RETOURNER N'EST PAS EGALE A ZERO CAR NOS ID NE SON JAMAIS ZERO
-            while (nbrAleatoire == 0)
+            //BOUCLE PERMETTANT DE VERIFIER SI LE NOMBRE ALEATOIR RETOURNER N'EST PAS EGALE A ZERO
+            while (nbrAleatoire== nbr)
             {
                 nbrAleatoire = rand.nextLong(postulantService.NombrePostulant());
             }
@@ -59,10 +60,7 @@ public class TirageController {
 
                 postulantTriéService.INSERERPOSTULANT(p.getNomp(),p.getPrenomp(),p.getNumerop(),p.getEmailp(),tirage.getIdt());
             }
-            if (i !=  0)
-            {
-                long nbr = nbrAleatoire;
-            }
+            nbr = nbrAleatoire;
 
             Boolean l =  postulants.remove(nbrAleatoire);
             System.out.println(l);
