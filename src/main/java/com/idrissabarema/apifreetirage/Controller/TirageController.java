@@ -61,9 +61,6 @@ public class TirageController {
                 postulantTriéService.INSERERPOSTULANT(p.getNomp(),p.getPrenomp(),p.getNumerop(),p.getEmailp(),tirage.getIdt());
             }
             nbr = nbrAleatoire;
-
-            Boolean l =  postulants.remove(nbrAleatoire);
-            System.out.println(l);
         }
         return "BRAVO SUCCES";
 
