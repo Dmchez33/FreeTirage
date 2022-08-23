@@ -131,9 +131,9 @@ public class PostulantServiceImplement implements PostulantService {
 
     // IMPLEMENTATION DE LA METHODE PERMETTANT DE TROUVER UN POSTULANT PAR SON ID
     @Override
-    public List<Postulant> TrouverPostulantId(long id_p){
+    public List<Postulant> TrouverPostulantId(long id){
 
-        return postulantRepository.findByIdp(id_p);
+        return postulantRepository.findByIdp(id);
     }
 
 }

@@ -12,5 +12,5 @@ import java.util.Date;
 
 public interface TirageRepository extends JpaRepository<Tirage, Long> {
 
-
+    Tirage findByLibellel(String libellet);
 }

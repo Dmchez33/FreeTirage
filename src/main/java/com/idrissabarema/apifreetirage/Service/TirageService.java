@@ -13,4 +13,5 @@ public interface TirageService {
     //METHODE PERMETTANT D'AFFICHER LA LISTE DES TIRAGE EFFECTUER
     List<Tirage> AfficherTirage();
     //int CreerTirage1(String libelle, int nbre);
+    Tirage trouverTirageParLibelle(String libellet);
 }

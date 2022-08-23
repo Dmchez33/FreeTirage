@@ -28,5 +28,10 @@ public class TirageServiceImplement implements TirageService {
         return tirageRepository.findAll();
     }
 
+    @Override
+    public Tirage trouverTirageParLibelle(String libellet) {
+        return tirageRepository.findByLibellel(libellet);
+    }
+
 
 }
