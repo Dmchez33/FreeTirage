@@ -31,7 +31,7 @@ public class PostulantServiceImplement implements PostulantService {
     @Override
     public ArrayList<Postulant> INSERPostulant(MultipartFile file) {
 
-        DataFormatter formatter=new DataFormatter();
+        DataFormatter formatter= new DataFormatter();
         ArrayList<Postulant> values = new ArrayList<Postulant>(); // Variable permettant de prendre toutes les donnes du tableau
 
         // Bloque permettant de lever les exception lors de l'importation du fichier excel
@@ -46,7 +46,7 @@ public class PostulantServiceImplement implements PostulantService {
 
             Iterator<Row> rows = sheet.rowIterator(); // Recuperation de tous les lignes de la page du fichier
             // Boucle permettant de parcours toutes lignes de la page
-            rows.next();
+            // rows.next();
             while (rows.hasNext()){
 
                 //values.clear(); // Vider toutes les donnes du tableau dynamique "values"
@@ -54,8 +54,8 @@ public class PostulantServiceImplement implements PostulantService {
                 HSSFRow row = (HSSFRow) rows.next(); // Recuperation d'une ligne du tableau
 
                 Iterator cells = row.cellIterator(); // Recuperation de toutes toutes les colonnes de chaque ligne
-                Postulant p=new Postulant();
-                int numColun=0;
+                Postulant p = new Postulant();
+                int numColun = 0;
                 // Boucle permettant de parcourut toutes les colonnes de chaque ligne
                 while (cells.hasNext()){
 
@@ -63,6 +63,7 @@ public class PostulantServiceImplement implements PostulantService {
 
                     switch (numColun){
 
+                        // formatter.formatCellValue Renvoie la valeur formatée d'une cellule en tant que String quel que soit le type de cellule
                         case 0:
                             p.setPrenomp(formatter.formatCellValue(cell));
                             break;
@@ -78,18 +79,9 @@ public class PostulantServiceImplement implements PostulantService {
                         default:
                             break;
                     }
+
                     numColun++;
-
-                    // Condition permettant de verifier le type de la colonne et effectuer une convesion si c'est type int
-                   // if (cell.getCellType() == CellType.NUMERIC){
-                     //   values.add(Integer.toString((int) cell.getNumericCellValue()));
-                   // }
-                    //else{
-                      //  values.add(cell.getStringCellValue());
-                   // }
                 }
-
-                //postulantRepository.INSERTPOSTULANT (values.get(3),values.get(1),values.get(2),values.get(0));
                   values.add(p);
             }
             return values;
