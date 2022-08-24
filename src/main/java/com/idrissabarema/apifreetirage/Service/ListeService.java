@@ -10,4 +10,5 @@ public interface ListeService {
     //Declaration des methode du Service Liste
     Liste CreerListe(Liste liste);
     Iterable<Object[]>  AfficherListe();
+    Liste findByLibellel(String libellel);
 }

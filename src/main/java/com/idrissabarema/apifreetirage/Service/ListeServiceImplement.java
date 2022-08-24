@@ -24,4 +24,9 @@ public class ListeServiceImplement implements ListeService {
     public Iterable<Object[]>  AfficherListe() {
         return listeRepository.AfficherListe();
     }
+
+    @Override
+    public Liste findByLibellel(String libellel) {
+        return listeRepository.findByLibellel(libellel);
+    }
 }

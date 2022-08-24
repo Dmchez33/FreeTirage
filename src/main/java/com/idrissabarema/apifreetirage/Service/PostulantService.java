@@ -2,6 +2,7 @@ package com.idrissabarema.apifreetirage.Service;
 
 
 import com.idrissabarema.apifreetirage.Model.Postulant;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -25,5 +26,6 @@ public interface PostulantService {
     void suprimerPostulantById(Long id);
 
     //METHODE PERMETTANT DE RETROUVE UN POSTULANT EN FONCTION DE SON ID
-    List<Postulant> TrouverPostulantId(long id_p);
+    Postulant TrouverPostulantId(long id_p);
+    List<Postulant> TrouverListPostParIdList(Long idl);
 }

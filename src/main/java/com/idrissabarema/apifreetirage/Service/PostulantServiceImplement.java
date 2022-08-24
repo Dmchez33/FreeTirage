@@ -9,6 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,9 +44,9 @@ public class PostulantServiceImplement implements PostulantService {
 
             HSSFSheet sheet = wb.getSheetAt(0); // Recuperation du Premier page du fichier excel
 
-            Iterator rows = sheet.rowIterator(); // Recuperation de tous les lignes de la page du fichier
+            Iterator<Row> rows = sheet.rowIterator(); // Recuperation de tous les lignes de la page du fichier
             // Boucle permettant de parcours toutes lignes de la page
-
+            rows.next();
             while (rows.hasNext()){
 
                 //values.clear(); // Vider toutes les donnes du tableau dynamique "values"
@@ -131,9 +132,14 @@ public class PostulantServiceImplement implements PostulantService {
 
     // IMPLEMENTATION DE LA METHODE PERMETTANT DE TROUVER UN POSTULANT PAR SON ID
     @Override
-    public List<Postulant> TrouverPostulantId(long id_p){
+    public Postulant TrouverPostulantId(long id){
 
-        return postulantRepository.findByIdp(id_p);
+        return postulantRepository.findByIdp(id);
+    }
+
+    @Override
+    public List<Postulant> TrouverListPostParIdList(Long idl) {
+        return postulantRepository.TrouverListPostParIdList(idl);
     }
 
 }
