@@ -22,9 +22,12 @@ public interface PostulantRepository extends JpaRepository<Postulant,Long> {
     @Query(value = "SELECT postulant.prenomp,postulant.nomp,postulant.numerop, postulant.emailp FROM postulant;", nativeQuery = true)
     public Iterable<Object[]>  AfficherPostulant();
 
+    //
+    @Query(value = "SELECT * FROM postulant WHERE idList= :idl", nativeQuery = true)
+    public List<Postulant> TrouverListPostParIdList(@Param("idl") Long idl);
     // REQUETTE POUR TROUVER LA LISTE DES POSTULANT PAR LEURS ID
 
-    List<Postulant> findByIdp(long id_p);
+    Postulant findByIdp(long id_p);
 
 
 
