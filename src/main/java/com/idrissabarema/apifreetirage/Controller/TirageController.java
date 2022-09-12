@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/tirage")
@@ -33,6 +34,7 @@ public class TirageController {
     final private Postulant_TriéService postulantTriéService;
 
     // METHODE PERMETTANT DE CREER LE POSTULANT DANS LE CONTROLLER
+
     @PostMapping("/creer_tirage/{libelle}")
     public String CreerTirage(@RequestBody Tirage tirage, Liste liste,@PathVariable("libelle") String libelle){
         Liste l = listeService.findByLibellel(libelle);
@@ -43,6 +45,7 @@ public class TirageController {
 
 
             tirage.setIdliste(l);
+            tirage.setDatet(new Date());
 
 
             // CREATION D'UN D'UN OBJET RANDOM POUR POUVOIR SELECTIONNER LES ELEMENT DE FACON ALEATOIR

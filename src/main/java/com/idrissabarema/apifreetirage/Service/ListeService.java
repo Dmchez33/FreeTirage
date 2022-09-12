@@ -11,4 +11,8 @@ public interface ListeService {
     Liste CreerListe(Liste liste);
     Iterable<Object[]>  AfficherListe();
     Liste findByLibellel(String libellel);
+    List<Liste>afficerListe();
+
+    List<Liste>afficerListeParId(long id);
+
 }

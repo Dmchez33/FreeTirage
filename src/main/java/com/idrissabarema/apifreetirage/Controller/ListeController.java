@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/liste")
@@ -22,5 +24,14 @@ public class ListeController {
     @GetMapping("/afficher")
     public Iterable<Object[]>  AfficherListe(){
         return listeService.AfficherListe();
+    }
+    @GetMapping("/Afficher")
+    public List<Liste> afficherListe(){
+        return listeService.afficerListe();
+    }
+
+    @GetMapping("/recuper_par_id/{id}")
+    public List<Liste> afficherListeParId(@PathVariable("id") long id){
+        return listeService.afficerListeParId(id);
     }
 }

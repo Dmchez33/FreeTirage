@@ -29,4 +29,14 @@ public class ListeServiceImplement implements ListeService {
     public Liste findByLibellel(String libellel) {
         return listeRepository.findByLibellel(libellel);
     }
+
+    @Override
+    public List<Liste> afficerListe() {
+        return listeRepository.findAll();
+    }
+
+    @Override
+    public List<Liste> afficerListeParId(long id) {
+        return listeRepository.findByIdl(id);
+    }
 }
