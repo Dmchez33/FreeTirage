@@ -1,6 +1,7 @@
 package com.idrissabarema.apifreetirage.Service;
 
 import com.idrissabarema.apifreetirage.Model.Postulant_Trié;
+import com.idrissabarema.apifreetirage.Model.Tirage;
 import com.idrissabarema.apifreetirage.Repository.Postulant_TriéRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class Postulant_TriéServiceImplement implements Postulant_TriéService {
     public void INSERERPOSTULANT(String nom, String prenom, String numero, String email, long id) {
         postulant_triéRepository.INSERTPOSTULANTTRIE(nom,prenom,numero,email, id);
 
+    }
+
+    @Override
+    public List<Postulant_Trié> trouverPostulantTireParId(Tirage tirage) {
+        return postulant_triéRepository.findByIdtirage(tirage);
     }
 }

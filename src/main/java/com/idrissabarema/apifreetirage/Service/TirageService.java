@@ -14,4 +14,8 @@ public interface TirageService {
     List<Tirage> AfficherTirage();
     //int CreerTirage1(String libelle, int nbre);
     Tirage trouverTirageParLibelle(String libellet);
+
+    List<Tirage> trouverTirageParId(long id);
+    List<Tirage> trouverTirageParListeId(Liste idliste);
+    int trouverNombreTirageParId(long id);
 }

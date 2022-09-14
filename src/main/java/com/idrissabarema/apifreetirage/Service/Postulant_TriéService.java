@@ -2,6 +2,7 @@ package com.idrissabarema.apifreetirage.Service;
 
 
 import com.idrissabarema.apifreetirage.Model.Postulant_Trié;
+import com.idrissabarema.apifreetirage.Model.Tirage;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface Postulant_TriéService {
 
     //INSERTION AVEC LA PERSONNALISEES
     void INSERERPOSTULANT(String nom, String prenom, String numero, String email, long id);
+
+    List<Postulant_Trié> trouverPostulantTireParId(Tirage tirage);
 
 }

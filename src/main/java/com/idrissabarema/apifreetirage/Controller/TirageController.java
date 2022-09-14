@@ -18,13 +18,13 @@ import java.util.*;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RequestMapping("/tirage")
 public class TirageController {
-
     // DECLARATION DU SERVICE TIRAGE
     @Autowired
     final private TirageService tirageService;
-    private  final ListeService listeService;
+    private final ListeService listeService;
     final private PostulantRepository postulantRepository;
 
     // DECLARATION DU SERVICE POSTULANT
@@ -36,10 +36,10 @@ public class TirageController {
     // METHODE PERMETTANT DE CREER LE POSTULANT DANS LE CONTROLLER
 
     @PostMapping("/creer_tirage/{libelle}")
-    public String CreerTirage(@RequestBody Tirage tirage, Liste liste,@PathVariable("libelle") String libelle){
+    public String CreerTirage(@RequestBody Tirage tirage, Liste liste, @PathVariable("libelle") String libelle) {
         Liste l = listeService.findByLibellel(libelle);
-        Long idList= l.getIdl();
-        if(tirageService.trouverTirageParLibelle(tirage.getLibellel()) == null) {//verifie si la liste existe
+        Long idList = l.getIdl();
+        if (tirageService.trouverTirageParLibelle(tirage.getLibellel()) == null) {//verifie si la liste existe
             //APPEL DE LA METHODE CREER TIRAGE POUR CREER TIRAGE
             tirageService.CreerTirage(tirage);
 
@@ -52,31 +52,31 @@ public class TirageController {
             Random rand = new Random();
             List<Long> list = new ArrayList<>();
 
-          //  for (int i = 0; i < tirage.getNbredemande(); i++) {
-                // LA METHODE NEXTLONG RETOURNE DES VALEUR ALEATOIRE A CHAQUE ITERATION DE LA BOUCLE FOR
+            //  for (int i = 0; i < tirage.getNbredemande(); i++) {
+            // LA METHODE NEXTLONG RETOURNE DES VALEUR ALEATOIRE A CHAQUE ITERATION DE LA BOUCLE FOR
 
-                List<Postulant> postl = postulantService.TrouverListPostParIdList(idList);
-                for (Postulant p: postl){
-                    list.add(p.getIdp());
-                }
+            List<Postulant> postl = postulantService.TrouverListPostParIdList(idList);
+            for (Postulant p : postl) {
+                list.add(p.getIdp());
+            }
             System.out.println(list);
 
             Collections.shuffle(list);
-                System.out.println(list);
-               // long nbrAleatoire = rand.nextLong(postl.size());
-                List<Postulant> listpostulant = new ArrayList<>();
+            System.out.println(list);
+            // long nbrAleatoire = rand.nextLong(postl.size());
+            List<Postulant> listpostulant = new ArrayList<>();
 
-                    //cette variable va contenir les index choisi par random aleatoirement
-                   // List<Long> index = listeNomrbeAleatoire.add(index);
+            //cette variable va contenir les index choisi par random aleatoirement
+            // List<Long> index = listeNomrbeAleatoire.add(index);
 
-                for (int j = 1; j <= tirage.getNbredemande(); j++) {
+            for (int j = 1; j <= tirage.getNbredemande(); j++) {
 
 
-                   Long k = list.get(j);
-                    System.out.println(k);
-                    listpostulant.add(postulantService.TrouverPostulantId(k));
-                    postl.remove(postulantService.TrouverPostulantId(k));
-                }
+                Long k = list.get(j);
+                System.out.println(k);
+                listpostulant.add(postulantService.TrouverPostulantId(k));
+                postl.remove(postulantService.TrouverPostulantId(k));
+            }
             //listpostulant.add(postulantService.TrouverPostulantId(k));
 
 
@@ -94,27 +94,39 @@ public class TirageController {
                 Boolean l1 = postulants.remove(nbrAleatoire);
                 System.out.println(l1);*/
 
-                //BOUCLE PERMETTANT DE PARCOURUT TOUS ELEMENT DE LA LISTE POSTULANT EN AFFECTTANT LES DONNEES DANS LA TABLE POSTULANT_TRIE
-                for (Postulant p : listpostulant) {
+            //BOUCLE PERMETTANT DE PARCOURUT TOUS ELEMENT DE LA LISTE POSTULANT EN AFFECTTANT LES DONNEES DANS LA TABLE POSTULANT_TRIE
+            for (Postulant p : listpostulant) {
 
-                    postulantTriéService.INSERERPOSTULANT(p.getNomp(), p.getPrenomp(), p.getNumerop(), p.getEmailp(), tirage.getIdt());
+                postulantTriéService.INSERERPOSTULANT(p.getNomp(), p.getPrenomp(), p.getNumerop(), p.getEmailp(), tirage.getIdt());
 
-                }
-
+            }
 
             return "BRAVO SUCCES";
-        }else{
+        } else {
             return "Cette liste existe déjà ";
         }
-
-
-
     }
 
     // METHODE PERMETTANT DE D'AFFICHER LA LISTE DU TIRAGE
-    @GetMapping("afficher")
-    public List<Tirage> AfficherTirage(){
+    @GetMapping("/afficher")
+    public List<Tirage> AfficherTirage() {
         return tirageService.AfficherTirage();
+    }
+
+    @GetMapping("/afficher/{id}")
+    public List<Tirage> AfficherTirageParId(@PathVariable("id") long id) {
+        return tirageService.trouverTirageParId(id);
+    }
+
+    @GetMapping("/afficherliste/{libelleliste}")
+    public List<Tirage> AfficherTiragePar(@PathVariable("libelleliste") String libelleliste) {
+        Liste liste = listeService.findByLibellel(libelleliste);
+        return tirageService.trouverTirageParListeId(liste);
+    }
+
+    @GetMapping("/afficherNombreTirage/{id}")
+    public int AfficherNombreTirage(@PathVariable("id") long id){
+        return tirageService.trouverNombreTirageParId(id);
     }
 
 }

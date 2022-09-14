@@ -33,5 +33,20 @@ public class TirageServiceImplement implements TirageService {
         return tirageRepository.findByLibellel(libellet);
     }
 
+    @Override
+    public List<Tirage> trouverTirageParId(long id) {
+        return this.tirageRepository.findByIdt(id);
+    }
+
+    @Override
+    public List<Tirage> trouverTirageParListeId(Liste idliste) {
+        return this.tirageRepository.findByIdliste(idliste);
+    }
+
+    @Override
+    public int trouverNombreTirageParId(long id) {
+        return tirageRepository.trouverNombreTirageParIdListe(id);
+    }
+
 
 }

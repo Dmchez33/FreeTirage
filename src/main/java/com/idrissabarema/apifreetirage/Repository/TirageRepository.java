@@ -9,8 +9,16 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 public interface TirageRepository extends JpaRepository<Tirage, Long> {
 
     Tirage findByLibellel(String libellet);
+
+    List<Tirage> findByIdt(long id);
+
+    List<Tirage> findByIdliste(Liste idliste);
+
+    @Query(value = "SELECT COUNT(*) FROM tirage WHERE idliste=:idliste", nativeQuery = true)
+    int trouverNombreTirageParIdListe(@Param("idliste") long idlise);
 }
