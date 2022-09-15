@@ -39,4 +39,14 @@ public class ListeServiceImplement implements ListeService {
     public List<Liste> afficerListeParId(long id) {
         return listeRepository.findByIdl(id);
     }
+
+    @Override
+    public int nombreTotalListe() {
+        return listeRepository.nombreTotalDeListe();
+    }
+
+    @Override
+    public List<Object> trouverListeParLibelle(String libelle) {
+        return listeRepository.trouverListeLIibelleSurTirage(libelle);
+    }
 }

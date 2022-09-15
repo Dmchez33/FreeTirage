@@ -15,4 +15,8 @@ public interface ListeService {
 
     List<Liste>afficerListeParId(long id);
 
+    int nombreTotalListe();
+
+    List<Object> trouverListeParLibelle(String libelle);
+
 }

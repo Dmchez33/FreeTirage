@@ -18,7 +18,7 @@ import java.util.*;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/tirage")
 public class TirageController {
     // DECLARATION DU SERVICE TIRAGE
@@ -128,5 +128,31 @@ public class TirageController {
     public int AfficherNombreTirage(@PathVariable("id") long id){
         return tirageService.trouverNombreTirageParId(id);
     }
+
+    @GetMapping("/nombreDeTirageTotal")
+    public int TrouverNombreTirage(){
+        return tirageService.trouverDeNombreTirageTotal();
+    }
+
+    @GetMapping("/nombreTotalDeListeTire")
+    public int TrouverNombreTotalDeListeTire(){
+        return tirageService.trouverDeNombreTotalListeTire();
+    }
+
+    @GetMapping("/trouverTirageParLibelle/{Libelle}")
+    public Tirage trouverTirageParLibellel(@PathVariable("Libelle") String libelle){
+        return tirageService.trouverTirageParLibelle(libelle);
+    }
+
+    @GetMapping("/nombreTirageParListe")
+    public List<Object> nombreTirageParListe(){
+        return tirageService.trouverTirageParListe();
+    }
+    /*
+    @GetMapping("/trouverTirageParLibelle/{libelle}")
+    public Tirage trouverTirageParLibelle(@PathVariable("libelle") String libelle){
+        return tirageService.trouverTirageParLibelle(libelle);
+    }*/
+
 
 }

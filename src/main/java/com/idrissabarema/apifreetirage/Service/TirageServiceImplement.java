@@ -48,5 +48,20 @@ public class TirageServiceImplement implements TirageService {
         return tirageRepository.trouverNombreTirageParIdListe(id);
     }
 
+    @Override
+    public int trouverDeNombreTirageTotal() {
+        return tirageRepository.trouverNombreDeTirageTotal();
+    }
+
+    @Override
+    public int trouverDeNombreTotalListeTire() {
+        return tirageRepository.trouverNombreDeListeTire();
+    }
+
+    @Override
+    public List<Object> trouverTirageParListe() {
+        return tirageRepository.nombreTirageParListe();
+    }
+
 
 }

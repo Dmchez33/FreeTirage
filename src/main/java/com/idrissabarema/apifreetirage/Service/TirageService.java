@@ -18,4 +18,8 @@ public interface TirageService {
     List<Tirage> trouverTirageParId(long id);
     List<Tirage> trouverTirageParListeId(Liste idliste);
     int trouverNombreTirageParId(long id);
+
+    int trouverDeNombreTirageTotal();
+    int trouverDeNombreTotalListeTire();
+    List<Object> trouverTirageParListe();
 }

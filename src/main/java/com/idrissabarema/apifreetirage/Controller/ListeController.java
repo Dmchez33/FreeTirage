@@ -34,4 +34,22 @@ public class ListeController {
     public List<Liste> afficherListeParId(@PathVariable("id") long id){
         return listeService.afficerListeParId(id);
     }
+
+    @GetMapping("/nombreTotalListe")
+    public int trouverNombreTotalListe(){
+        return listeService.nombreTotalListe();
+    }
+
+    @GetMapping("/trouverListeParLibelle/{libelle}")
+    public Liste TrouverListeParLibelle(@PathVariable("libelle") String libelle){
+        return listeService.findByLibellel(libelle);
+    }
+
+    @GetMapping("/trouverListeParLibelleTirage/{libelle}")
+    public List<Object> trouverLibelleListe(@PathVariable("libelle") String libelle)
+    {
+        return this.listeService.trouverListeParLibelle(libelle);
+    }
+
+
 }
